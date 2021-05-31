@@ -1,0 +1,18 @@
+name = "EarthAlbedo"
+uuid = "d35a88f7-7e53-43e7-b184-7c3e13cf9009"
+authors = ["Benj <bjensen@andrew.cmu.edu>"]
+version = "0.1.0"
+
+[deps]
+CoordinateTransformations = "150eb455-5306-5404-9cee-2592286d6298"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+SatelliteDynamics = "0e7c1a32-1b9f-5532-88a4-e668712d6a4c"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
