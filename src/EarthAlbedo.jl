@@ -5,9 +5,9 @@ module EarthAlbedo
 # REFL data downloaded from https://bhanderi.dk/downloads/
 
 
-import CoordinateTransformations # For Cartesian/Spherical conversions
-import SatelliteDynamics         # For GEOD/ECEF Conversions
-import LinearAlgebra
+using CoordinateTransformations # For Cartesian/Spherical conversions
+using SatelliteDynamics         # For GEOD/ECEF Conversions
+using LinearAlgebra
 
 
 CONSTANTS = (EARTH_RADIUS = 6371.01e3,    # Average radius of the Earth, m       
