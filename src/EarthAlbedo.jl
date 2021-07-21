@@ -2,7 +2,7 @@ module EarthAlbedo
 # Calculation of albedo for given satellite, sun location, and reflectivity data
 # 
 # (Ported over from Matlab's Earth Albedo Toolbox)
-# REFL data downloaded from https://bhanderi.dk/downloads/
+# REFL data downloaded from https://bhanderi.dk/downloads/  (e.g., refl = matread("tomsdata2005/2005/ga050101-051231.mat"))
 
 
 using CoordinateTransformations # For Cartesian/Spherical conversions
@@ -214,7 +214,16 @@ function gridangle(i1, j1, i2, j2, sy, sx)
     θ1, ϕ1 = idx2rad(i1, j1, sy, sx)
     θ2, ϕ2 = idx2rad(i2, j2, sy, sx);
 
-    ρ = acos( sin(ϕ1)*sin(ϕ2)*cos(θ1 - θ2) + cos(ϕ1)*cos(ϕ2) );
+    υ = sin(ϕ1)*sin(ϕ2)*cos(θ1 - θ2) + cos(ϕ1)*cos(ϕ2) 
+
+    # Account for numerical imprecision 
+    if (υ > 1.0) && (υ ≈ 1.0)
+        υ = 1.0 
+    elseif (υ < -1.0) && (υ ≈ -1.0)
+        υ = -1.0
+    end
+
+    ρ = acos(υ);
 
     return ρ
 end
