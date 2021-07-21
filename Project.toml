@@ -1,7 +1,7 @@
 name = "EarthAlbedo"
 uuid = "d35a88f7-7e53-43e7-b184-7c3e13cf9009"
 authors = ["Benjamin Jensen <bjensen@andrew.cmu.edu>"]
-version = "0.1.1"
+version = "0.1.2"
 
 [deps]
 CoordinateTransformations = "150eb455-5306-5404-9cee-2592286d6298"
