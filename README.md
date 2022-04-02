@@ -1,3 +1,7 @@
+[![CI](https://github.com/RoboticExplorationLab/EarthAlbedo.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/RoboticExplorationLab/EarthAlbedo.jl/actions/workflows/CI.yml)
+[![codecov](https://codecov.io/gh/RoboticExplorationLab/EarthAlbedo.jl/branch/main/graph/badge.svg?token=KVSPWD43MP)](https://codecov.io/gh/RoboticExplorationLab/EarthAlbedo.jl)
+[![](https://img.shields.io/badge/docs-stable-blue.svg)](http://roboticexplorationlab.org/EarthAlbedo.jl/dev/)
+
 # EarthAlbedo.jl
 
 This package holds code used for the calculation of Earth's albedo for a given satellite, sun location, and set of reflectivity data. Note that this has been ported over from MATLAB's 'Earth Albedo Toolbox', and uses reflectivity data downloaded from https://bhanderi.dk/downloads/ .
