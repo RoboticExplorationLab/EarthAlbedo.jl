@@ -13,3 +13,7 @@ Note that the 'Earth Albedo Toolbox' does not need to be downloaded for this to 
 ## Use 
 
 The primary function is 'albedo(sat, sun, refl_data)' which takes in a vector containing the satellite and sun positions in the inertial frame (centered on Earth), as well as a set of reflectivity data. The provided data from the above link is from the TOMS dataset and is the average measured reflectivity for each section of Earth over a specified time period.
+
+
+## Other
+Note that SatelliteDynamics.jl is used to convert between 

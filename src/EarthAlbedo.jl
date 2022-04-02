@@ -3,7 +3,7 @@
 module EarthAlbedo
 
     using LinearAlgebra 
-    using SatelliteDynamics  # For GEOD/ECEF Conversions (may not work on Windows?)
+    # using SatelliteDynamics  # For GEOD/ECEF Conversions (may not work on Windows?)
     using CoordinateTransformations  # For spherical <-> Cartesian transformations
     using StaticArrays
     using JLD2
