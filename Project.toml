@@ -1,6 +1,6 @@
 name = "EarthAlbedo"
-uuid = "559c2c17-e6f4-4266-99ec-ed4359dbbb46"
-authors = ["Benj <benjjensen@live.com>"]
+uuid = "d35a88f7-7e53-43e7-b184-7c3e13cf9009"
+authors = ["Benjamin Jensen <bjensen@andrew.cmu.edu>"]
 version = "1.0"
 
 [deps]
