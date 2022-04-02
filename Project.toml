@@ -1,7 +1,7 @@
 name = "EarthAlbedo"
 uuid = "559c2c17-e6f4-4266-99ec-ed4359dbbb46"
 authors = ["Benj <benjjensen@live.com>"]
-version = "0.1.0"
+version = "1.0"
 
 [deps]
 CoordinateTransformations = "150eb455-5306-5404-9cee-2592286d6298"
@@ -12,3 +12,4 @@ StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
 [compat]
 CoordinateTransformations = "0.6.2"
 JLD2 = "0.4.22"
+julia = "1"
