@@ -14,7 +14,7 @@ Arguments:
 Returns:
 - fov:  Cells on Earth's surface that are in the field of view of the given object   |  BitMatrix [sy, sx]
 """
-function earthfov(pos_sph::Vector{Float64}, sy::Int, sx::Int, Rₑ = 6371.01e3)::BitMatrix # Matrix{Int8}
+function earthfov(pos_sph::Vector{Float64}, sy::Int, sx::Int; Rₑ = 6371.01e3)::BitMatrix # Matrix{Int8}
 
     if pos_sph[3] < Rₑ  # LEO shortcut (?) -
         pos_sph[3] = pos_sph[3] + Rₑ
@@ -55,7 +55,7 @@ Arguments:
 - Rₑ:      (Optional) Average radius of the Earth (m)                                |  Float            
 
 """
-function earthfov!(fov::BitMatrix, pos_sph::SVector{3, Float64}, sy::Int, sx::Int, Rₑ = 6371.01e3)::BitMatrix # Matrix{Int8}
+function earthfov!(fov::BitMatrix, pos_sph::SVector{3, Float64}, sy::Int, sx::Int; Rₑ = 6371.01e3)::BitMatrix # Matrix{Int8}
 
     if pos_sph[3] < Rₑ  # LEO shortcut 
         pos_sph[3] = pos_sph[3] + Rₑ

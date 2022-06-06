@@ -66,8 +66,8 @@ module EarthAlbedo
         # # SKIP GENERATING PLOTS FOR NOW
     
         cells = fill!(BitArray(undef, num_lat, num_lon), 1)
-        earthfov!(cells, sat_sph, num_lat, num_lon)
-        earthfov!(cells, sun_sph, num_lat, num_lon)
+        earthfov!(cells, sat_sph, num_lat, num_lon; Rₑ)
+        earthfov!(cells, sun_sph, num_lat, num_lon; Rₑ)
     
         cell_albedos = zeros(Float64, num_lat, num_lon)                                                                             
     
@@ -105,7 +105,7 @@ module EarthAlbedo
         ϕ_in = gridangle(cell_i, cell_j, sun_i, sun_j, num_lat, num_lon);                  
         ϕ_in = (ϕ_in > pi/2) ? pi/2 : ϕ_in 
     
-        E_inc = AM₀ * cellarea(cell_i, cell_j, num_lat, num_lon) * cos(ϕ_in)               
+        E_inc = AM₀ * cellarea(cell_i, cell_j, num_lat, num_lon; Rₑ = Rₑ) * cos(ϕ_in)               
     
         grid_theta, grid_phi = idx2rad(cell_i, cell_j, num_lat, num_lon)                        
     
@@ -123,12 +123,14 @@ module EarthAlbedo
 
 
     """
-      Loads in reflectivity data and stores it in a REFL struct
+         Loads in reflectivity data and stores it in a REFL struct.
+        Allows for downsampling by adjusting `ds_factor` (Note that 
+        this affects the latitude and longitude step sizes).  
     """
-    function load_refl(path = "data/refl.jld2")
+    function load_refl(path = "../data/refl.jld2", ds_factor = 1)
         temp = load(path)
     
-        refl = REFL( temp["data"], temp["type"], temp["start_time"], temp["stop_time"])
+        refl = REFL( temp["data"][1:ds_factor:end, 1:ds_factor:end], temp["type"], temp["start_time"], temp["stop_time"])
     
         return refl
     end

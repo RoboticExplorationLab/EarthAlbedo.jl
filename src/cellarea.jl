@@ -13,7 +13,7 @@ Arguments:
 Returns:
 - A:  Area of desired cell                                                  | Scalar
 """
-function cellarea(i::Int, j::Int, sy::Int, sx::Int, Rₑ = 6371.01e3)    # Average radius of the Earth, m   
+function cellarea(i::Int, j::Int, sy::Int, sx::Int; Rₑ = 6371.01e3)    # Average radius of the Earth, m   
 
     _d2r = pi / 180.0; # Standard degrees to radians conversion
 

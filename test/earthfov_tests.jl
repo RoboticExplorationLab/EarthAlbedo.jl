@@ -11,7 +11,7 @@ using Test
     @testset "Defaults" begin
         sy, sx = 288, 180 
         
-        # Run through some preset
+        # Run through some preset positions
         positions = [6.5e6  6.5e6  6.5e6;   # Near the surface
                      1.0e9  1.0e9  1.0e9;   # Far away 
                      1.0e3  2.0e3 -1.0e3;   # Too close (inside Earth) -> Should warn and then add in Re
@@ -30,9 +30,14 @@ using Test
             sat_sph_t = SphericalFromCartesian()(positions[i, :])
             sat_sph   = [sat_sph_t.θ; (pi/2) - sat_sph_t.ϕ; sat_sph_t.r];  # Adjust order to match template code to (θ ϵ r), with ϵ = (π/2) - ϕ
 
-            fov_jl = earthfov(sat_sph, sy, sx)
+            if N == 3  # Should throw a warning...
+                fov_jl = @test_logs (:warn, "Warning: radial distance is less than radius of the Earth. Adding in Earth's radius...") earthfov(sat_sph, sy, sx)
+                @test earthfov_test[i] == fov_jl
 
-            @test earthfov_test[i] == fov_jl
+            else
+                fov_jl = earthfov(sat_sph, sy, sx)
+                @test earthfov_test[i] == fov_jl
+            end
         end
     end 
 
@@ -80,7 +85,7 @@ using Test
 
             sat_sph_unconverted = [sat_sph[1], sat_sph[2], 1000 * sat_sph[3]] 
 
-            fov_jl = earthfov(sat_sph, sy, sx, Rₑ)
+            fov_jl = earthfov(sat_sph, sy, sx; Rₑ = Rₑ) 
             
             @test earthfov_mod_units[i] == fov_jl
         end
